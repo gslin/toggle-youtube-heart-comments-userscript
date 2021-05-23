@@ -6,6 +6,7 @@
 // @version     0.20210524.0
 // @author      Gea-Suan Lin <gslin@gslin.com>
 // @description Toggle YouTube heart comments.
+// @license     MIT
 // ==/UserScript==
 
 (() => {
