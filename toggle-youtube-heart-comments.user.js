@@ -3,7 +3,7 @@
 // @namespace   https://github.com/gslin/toggle-youtube-heart-comments-userscript
 // @match       https://www.youtube.com/*
 // @grant       none
-// @version     0.20210524.0
+// @version     0.20210524.1
 // @author      Gea-Suan Lin <gslin@gslin.com>
 // @description Toggle YouTube heart comments.
 // @license     MIT
@@ -42,12 +42,12 @@
                 });
 
                 // Don't install twice.
-                if (document.getElementById('toggle_youtube_star_comments')) {
+                if (document.getElementById('toggle_youtube_heart_comments')) {
                     return;
                 }
 
                 let toggle_el = document.createElement('div');
-                toggle_el.innerHTML = '<button id="toggle_youtube_star_comments">Toggle star comments</button>';
+                toggle_el.innerHTML = '<button id="toggle_youtube_heart_comments">Toggle heart comments</button>';
                 toggle_el.addEventListener('click', () => {
                     if ('' === sheet.innerHTML) {
                         sheet.innerHTML = '.has-creator-heart { display: none; }';
