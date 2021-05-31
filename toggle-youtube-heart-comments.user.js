@@ -3,7 +3,7 @@
 // @namespace   https://github.com/gslin/toggle-youtube-heart-comments-userscript
 // @match       https://www.youtube.com/*
 // @grant       none
-// @version     0.20210524.1
+// @version     0.20210601.0
 // @author      Gea-Suan Lin <gslin@gslin.com>
 // @description Toggle YouTube heart comments.
 // @license     MIT
@@ -47,11 +47,21 @@
                 }
 
                 let toggle_el = document.createElement('div');
-                toggle_el.innerHTML = '<button id="toggle_youtube_heart_comments">Toggle heart comments</button>';
+                toggle_el.innerHTML = '<button data-status="0" id="toggle_youtube_heart_comments">All (All / Heart / Non-Heart)</button>';
+
+                let button_el = toggle_el.querySelector('button');
                 toggle_el.addEventListener('click', () => {
-                    if ('' === sheet.innerHTML) {
-                        sheet.innerHTML = '.has-creator-heart { display: none; }';
+                    if (button_el.dataset.status === '0') {
+                        button_el.dataset.status = '1';
+                        button_el.innerHTML = 'Heart (All / Heart / Non-Heart)';
+                        sheet.innerHTML = 'ytd-comment-thread-renderer:not(.has-creator-heart) { display: none; }'
+                    } else if (button_el.dataset.status === '1') {
+                        button_el.dataset.status = '2';
+                        button_el.innerHTML = 'Non-Heart (All / Heart / Non-Heart)';
+                        sheet.innerHTML = 'ytd-comment-thread-renderer.has-creator-heart { display: none; }'
                     } else {
+                        button_el.dataset.status = '0';
+                        button_el.innerHTML = 'All (All / Heart / Non-Heart)';
                         sheet.innerHTML = '';
                     }
                 });
