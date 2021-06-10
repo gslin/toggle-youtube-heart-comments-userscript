@@ -3,7 +3,7 @@
 // @namespace   https://github.com/gslin/toggle-youtube-heart-comments-userscript
 // @match       https://www.youtube.com/*
 // @grant       none
-// @version     0.20210601.0
+// @version     0.20210611.0
 // @author      Gea-Suan Lin <gslin@gslin.com>
 // @description Toggle YouTube heart comments.
 // @license     MIT
@@ -50,7 +50,7 @@
                 toggle_el.innerHTML = '<button data-status="0" id="toggle_youtube_heart_comments">All (All / Heart / Non-Heart)</button>';
 
                 let button_el = toggle_el.querySelector('button');
-                toggle_el.addEventListener('click', () => {
+                button_el.addEventListener('click', () => {
                     if (button_el.dataset.status === '0') {
                         button_el.dataset.status = '1';
                         button_el.innerHTML = 'Heart (All / Heart / Non-Heart)';
